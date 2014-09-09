@@ -1,7 +1,16 @@
 ---
 # tasks file for cron
 
-- name: Install cron config file
+- name: Manage system crontab.
+  copy:
+    src=crontab
+    dest=/etc/crontab
+    owner=root
+    group=root
+    mode=0644
+
+
+- name: Install cron config file.
   template:
     src=cron.j2
     dest=/etc/default/cron
